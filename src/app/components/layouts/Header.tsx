@@ -36,8 +36,8 @@ export default function Header() {
     }
   }, [])
   return (
-    <header className="bg-[#a0a0a0] grid grid-cols-6 h-24">
-      <div className="items-center justify-center w-24 h-24 col-span-1 row-flex">
+    <header className="bg-[#889aa2] grid grid-cols-6 h-24">
+      <div className="row-flex items-center justify-center w-24 h-24 col-span-1">
         <Image
           src="/kuku.png"
           alt="kuku"
@@ -60,20 +60,20 @@ export default function Header() {
 function DropdownMenu(props: DropdownMenuProps) {
   const { isDropdownOpen, dropdownRef, menus, toggleDropdown } = props
   return (
-    <div className="col-span-5 grid grid-cols-4 md:hidden">
+    <div className="md:hidden grid grid-cols-4 col-span-5">
       <GiHamburgerMenu
         onClick={toggleDropdown}
-        className="absolute w-10 h-10 cursor-pointer top-8 right-12"
+        className="top-8 right-12 absolute w-10 h-10 cursor-pointer"
       />
       {isDropdownOpen && (
         <div
           ref={dropdownRef}
-          className="fixed left-0 w-full bg-[#a0a0a0] shadow-lg text-center"
+          className="fixed left-0 w-full bg-[#889aa2] shadow-lg text-center"
         >
           {menus.map((menu, index) => (
             <div
               key={index}
-              className="px-4 py-4 text-xl cursor-pointer hover:bg-gray-200 simple-transition "
+              className="hover:bg-gray-200 simple-transition px-4 py-4 text-xl cursor-pointer"
             >
               {menu}
             </div>
@@ -87,10 +87,10 @@ function DropdownMenu(props: DropdownMenuProps) {
 function NormalMenu(props: NormalMenuProps) {
   const { menus } = props
   return (
-    <div className="hidden md:grid col-span-5 grid-cols-4">
+    <div className="md:grid hidden grid-cols-4 col-span-5">
       {menus.map((menu, index) => (
-        <div key={index} className="items-center justify-center row-flex ">
-          <span className="px-2 py-2 text-xl border-2 border-transparent cursor-pointer hover:border-b-white simple-transition hover:text-white">
+        <div key={index} className="row-flex items-center justify-center">
+          <span className="hover:border-b-white simple-transition hover:text-white px-2 py-2 text-xl border-2 border-transparent cursor-pointer">
             {menu}
           </span>
         </div>
