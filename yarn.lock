@@ -3758,6 +3758,7 @@ __metadata:
     prettier: "npm:^3.2.5"
     react: "npm:19.0.0-rc.1"
     react-dom: "npm:19.0.0-rc.1"
+    react-icons: "npm:^5.4.0"
     tailwindcss: "npm:^3.3.0"
     typescript: "npm:^5"
   languageName: unknown
@@ -4247,6 +4248,15 @@ __metadata:
   peerDependencies:
     react: 19.0.0-rc.1
   checksum: 10c0/26fba423f41c8b3c7a47278ea490146506333175028e111e49eb39310110b6bda956cc772c77412abc8a7f28244eea80ebade15ec5b4382d79e2ac1b39bd2d0c
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^5.4.0":
+  version: 5.4.0
+  resolution: "react-icons@npm:5.4.0"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/698b0c4616870152d86de2585fb709bf3eeb9292d971d689965dade5f0ee71cdc92d2125b728ab220cc39a4c6d6bad1ed526b9b934ab39a7b6001bc23b73ee16
   languageName: node
   linkType: hard
 
