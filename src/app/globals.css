@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#a0a0a0];
+    font-family: 'ConcertOne';
+  }
+}
+@font-face {
+  font-family: 'ConcertOne';
+  src: url('/fonts/ConcertOne-Regular.ttf');
+}
+@layer utilities {
+  .row-flex {
+    @apply flex flex-row;
+  }
+  .col-flex {
+    @apply flex flex-col;
+  }
+}
