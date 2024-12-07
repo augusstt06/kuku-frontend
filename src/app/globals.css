@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#a0a0a0];
+    @apply bg-[#5f5f5f];
     font-family: 'ConcertOne';
   }
 }
@@ -18,5 +18,8 @@
   }
   .col-flex {
     @apply flex flex-col;
+  }
+  .simple-transition {
+    @apply ease-in-out transition-all duration-500;
   }
 }
