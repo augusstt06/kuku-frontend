@@ -37,7 +37,7 @@ export default function Header() {
   }, [])
   return (
     <header className="bg-[#a0a0a0] grid grid-cols-6 h-24">
-      <div className="col-span-1 row-flex items-center justify-center h-24 w-24">
+      <div className="items-center justify-center w-24 h-24 col-span-1 row-flex">
         <Image
           src="/kuku.png"
           alt="kuku"
@@ -63,7 +63,7 @@ function DropdownMenu(props: DropdownMenuProps) {
     <div className="col-span-5 grid grid-cols-4 md:hidden">
       <GiHamburgerMenu
         onClick={toggleDropdown}
-        className="cursor-pointer w-10 h-10 absolute top-8 right-12"
+        className="absolute w-10 h-10 cursor-pointer top-8 right-12"
       />
       {isDropdownOpen && (
         <div
@@ -73,7 +73,7 @@ function DropdownMenu(props: DropdownMenuProps) {
           {menus.map((menu, index) => (
             <div
               key={index}
-              className="px-4 py-4 cursor-pointer hover:bg-gray-200 simple-transition text-xl "
+              className="px-4 py-4 text-xl cursor-pointer hover:bg-gray-200 simple-transition "
             >
               {menu}
             </div>
@@ -89,8 +89,8 @@ function NormalMenu(props: NormalMenuProps) {
   return (
     <div className="hidden md:grid col-span-5 grid-cols-4">
       {menus.map((menu, index) => (
-        <div key={index} className="row-flex items-center justify-center ">
-          <span className="text-xl cursor-pointer px-2 py-2 border-2 border-transparent hover:border-b-white simple-transition hover:text-white">
+        <div key={index} className="items-center justify-center row-flex ">
+          <span className="px-2 py-2 text-xl border-2 border-transparent cursor-pointer hover:border-b-white simple-transition hover:text-white">
             {menu}
           </span>
         </div>
