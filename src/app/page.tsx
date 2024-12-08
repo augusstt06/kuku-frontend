@@ -1,10 +1,10 @@
 import Footer from '@/app/components/layouts/Footer'
-import Main from '@/app/components/pages/Main'
+import Introduction from '@/app/components/pages/Introduction'
 
 export default function Home() {
   return (
     <main>
-      <Main />
+      <Introduction />
       <Footer />
     </main>
   )

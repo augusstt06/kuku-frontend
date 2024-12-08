@@ -36,7 +36,6 @@ export default function Header() {
     }
   }, [])
   return (
-    // <header className="bg-[#889aa2]  grid grid-cols-6 h-24">
     <header className="grid grid-cols-6 h-24 fixed top-0 left-0 w-full bg-opacity-80 bg-black z-50 text-white">
       <div className="row-flex items-center justify-center w-24 h-24 col-span-1">
         <Image
@@ -69,13 +68,12 @@ function DropdownMenu(props: DropdownMenuProps) {
       {isDropdownOpen && (
         <div
           ref={dropdownRef}
-          className="fixed left-0 w-full bg-[#889aa2] shadow-lg text-center "
-          // className="fixed left-0 w-full bg-[#889aa2] shadow-lg text-center "
+          className="fixed left-0 w-full bg-black shadow-lg text-center "
         >
           {menus.map((menu, index) => (
             <div
               key={index}
-              className="hover:bg-gray-200 simple-transition px-4 py-4 text-xl cursor-pointer"
+              className="hover:bg-gray-200 simple-transition px-4 py-4 text-xl hover:text-black cursor-pointer"
             >
               {menu}
             </div>
