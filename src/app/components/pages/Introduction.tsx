@@ -28,6 +28,7 @@ export default function Introduction() {
         </>
       ),
     },
+    // FIXME: 버튼 위치 획일화
     {
       image: <MdEmojiEvents className="w-28 h-24 text-yellow-300" />,
       text: (
