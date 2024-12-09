@@ -5,6 +5,7 @@ import { MdEmojiEvents } from 'react-icons/md'
 type TSubIntroductionText = {
   image: React.ReactNode
   text: React.ReactNode
+  button: React.ReactNode
 }
 export default function Introduction() {
   const subIntroductions = [
@@ -27,8 +28,8 @@ export default function Introduction() {
           </p>
         </>
       ),
+      button: null,
     },
-    // FIXME: 버튼 위치 획일화
     {
       image: <MdEmojiEvents className="w-28 h-24 text-yellow-300" />,
       text: (
@@ -37,6 +38,7 @@ export default function Introduction() {
             Participate in Kuku Coin’s first{' '}
             <span className="text-blue-400">Development Event!</span>
           </p>
+          <br />
           <p>
             This event is a place to discuss the future of Kuku Coin and share
             ideas with the community.
@@ -45,12 +47,14 @@ export default function Introduction() {
             If you would like to participate, please pre-register through the
             button below.
           </p>
-          <div className="flex justify-center xl:mt-10 mt-4">
-            <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
-              Pre-register
-            </button>
-          </div>
         </>
+      ),
+      button: (
+        <div className="flex justify-center xl:mt-10 mt-4">
+          <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+            Pre-register
+          </button>
+        </div>
       ),
     },
     {
@@ -68,12 +72,14 @@ export default function Introduction() {
             communication with the community, so we ask for your interest and
             participation!
           </p>
-          <div className="flex justify-center xl:mt-10 mt-2">
-            <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
-              Go Twitter
-            </button>
-          </div>
         </>
+      ),
+      button: (
+        <div className="flex justify-center xl:mt-10 mt-2">
+          <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+            Go Twitter
+          </button>
+        </div>
       ),
     },
   ]
@@ -111,11 +117,14 @@ export function IntroductionText() {
   )
 }
 export function SubIntroductionText(props: TSubIntroductionText) {
-  const { image, text } = props
+  const { image, text, button } = props
   return (
-    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[50rem] h-[20rem] rounded-lg px-10 py-6">
-      <div className="row-flex items-center justify-center h-24">{image}</div>
-      <div className="px-2 py-2 text-lg">{text}</div>
+    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[50rem] h-[20rem] rounded-lg px-10 py-6 grid grid-rows-5">
+      <div className="row-flex items-center justify-center h-24 row-span-1">
+        {image}
+      </div>
+      <div className="px-2 py-2 text-lg row-span-3">{text}</div>
+      <div className="row-span-1">{button}</div>
     </div>
   )
 }
