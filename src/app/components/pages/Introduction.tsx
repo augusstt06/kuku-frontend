@@ -10,9 +10,17 @@ type TSubIntroductionText = {
 export default function Introduction() {
   const subIntroductions = [
     {
-      image: <Image src={'/kuku.png'} alt={'kuku'} width={110} height={100} />,
+      image: (
+        <Image
+          src={'/kuku.png'}
+          alt={'kuku'}
+          width={110}
+          height={100}
+          className="xl:w-28 xl:h-28 w-16 h-16"
+        />
+      ),
       text: (
-        <>
+        <div className="pt-5">
           <p>
             <span className="text-blue-400">Kuku Coin</span> is a special meme
             coin created to commemorate the adorable cat Kuku.
@@ -26,19 +34,21 @@ export default function Introduction() {
             simple cryptocurrency and become a platform that connects cat lovers
             and the community.
           </p>
-        </>
+        </div>
       ),
       button: null,
     },
     {
-      image: <MdEmojiEvents className="w-28 h-24 text-yellow-300" />,
+      image: (
+        <MdEmojiEvents className="xl:w-28 xl:h-24 w-12 h-12 text-yellow-300" />
+      ),
       text: (
         <>
           <p>
             Participate in Kuku Coin’s first{' '}
             <span className="text-blue-400">Development Event!</span>
           </p>
-          <br />
+
           <p>
             This event is a place to discuss the future of Kuku Coin and share
             ideas with the community.
@@ -50,15 +60,13 @@ export default function Introduction() {
         </>
       ),
       button: (
-        <div className="flex justify-center xl:mt-10 mt-4">
-          <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
-            Pre-register
-          </button>
-        </div>
+        <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+          Pre-register
+        </button>
       ),
     },
     {
-      image: <FaTwitter className="w-28 h-20 text-blue-400" />,
+      image: <FaTwitter className="xl:w-28 xl:h-24 w-12 h-12 text-blue-400" />,
       text: (
         <>
           <p>
@@ -75,11 +83,9 @@ export default function Introduction() {
         </>
       ),
       button: (
-        <div className="flex justify-center xl:mt-10 mt-2">
-          <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
-            Go Twitter
-          </button>
-        </div>
+        <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+          Go Twitter
+        </button>
       ),
     },
   ]
@@ -118,13 +124,20 @@ export function IntroductionText() {
 }
 export function SubIntroductionText(props: TSubIntroductionText) {
   const { image, text, button } = props
+  const isButtonExist = button !== null
   return (
-    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[50rem] h-[20rem] rounded-lg px-10 py-6 grid grid-rows-5">
-      <div className="row-flex items-center justify-center h-24 row-span-1">
+    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[40rem] h-[18rem] rounded-lg px-10 py-6 grid grid-rows-5">
+      <div className="row-flex xl:items-center items-start justify-center h-24 row-span-1">
         {image}
       </div>
-      <div className="px-2 py-2 text-lg row-span-3">{text}</div>
-      <div className="row-span-1">{button}</div>
+      <div
+        className={`px-2 py-2 xl:text-lg text-md ${isButtonExist ? 'row-span-3' : 'row-span-4'} col-flex items-start justify-center`}
+      >
+        {text}
+      </div>
+      <div className="row-span-1 row-flex items-center justify-center">
+        {button}
+      </div>
     </div>
   )
 }
