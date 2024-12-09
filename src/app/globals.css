@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#B0BEC5];
+    @apply bg-[#292929];
     font-family: 'ConcertOne';
   }
 }

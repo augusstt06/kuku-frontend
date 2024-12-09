@@ -59,6 +59,7 @@ export default function Introduction() {
           </p>
         </>
       ),
+      // FIXME: 버튼 클릭 이벤트 추가하기
       button: (
         <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
           Pre-register
@@ -82,6 +83,7 @@ export default function Introduction() {
           </p>
         </>
       ),
+      // FIXME: 버튼 클릭 이벤트 추가하기
       button: (
         <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
           Go Twitter
@@ -109,6 +111,7 @@ export default function Introduction() {
 export function BgImage() {
   return (
     // FIXME: 반응형 대응: 배경화면이 길어져야함 xl 이하일대
+    // 현재는 Introduction만 확인했을때는 높이가 맞지만, 아래 RoadMap 페이지 확인시 높이가 맞지 않음 (반응형 크기가 RoadMap 페이지를 침범함)
     <div
       className="absolute inset-0 bg-cover bg-center opacity-80 h-[170vh] xl:h-full"
       style={{ backgroundImage: "url('/forest.png')" }}
