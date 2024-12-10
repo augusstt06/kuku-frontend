@@ -92,13 +92,13 @@ export default function Introduction() {
     },
   ]
   return (
-    <article className="h-screen relative">
+    <article className="xl:h-screen h-[170vh] relative">
       <BgImage />
       <div className="z-10 pt-24 text-white h-full">
         <div className="h-1/4 relative">
           <IntroductionText />
         </div>
-        <div className="absolute w-full h-full xl:h-3/4 grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5">
+        <div className="absolute w-full h-[100vh] grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5">
           {subIntroductions.map((subIntroduction, index) => (
             <SubIntroductionText key={index} {...subIntroduction} />
           ))}
@@ -110,8 +110,6 @@ export default function Introduction() {
 
 export function BgImage() {
   return (
-    // FIXME: 반응형 대응: 배경화면이 길어져야함 xl 이하일대
-    // 현재는 Introduction만 확인했을때는 높이가 맞지만, 아래 RoadMap 페이지 확인시 높이가 맞지 않음 (반응형 크기가 RoadMap 페이지를 침범함)
     <div
       className="absolute inset-0 bg-cover bg-center opacity-80 h-[170vh] xl:h-full"
       style={{ backgroundImage: "url('/forest.png')" }}
