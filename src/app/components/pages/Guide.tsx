@@ -4,7 +4,7 @@ type TGuideCard = {
   step: string
   subTitle: string
   content: React.ReactNode
-  wallets?: TWalletIcon[]
+  icons?: TWalletIcon[]
 }
 type TSubTitle = {
   step: string
@@ -41,36 +41,69 @@ export default function Guide() {
           <p>Click the icon below to go to the installation page.</p>
         </>
       ),
-      wallets: walletArr,
+      icons: walletArr,
+    },
+    {
+      isWallet: false,
+      step: '02.',
+      subTitle: 'Connect Wallet',
+      content: (
+        <>
+          <p>
+            Open the installed wallet and create a wallet. Set a password and
+            keep your recovery phrase safe.
+          </p>
+          <p>
+            Add funds to your wallet by purchasing Ethereum (ETH) or another
+            cryptocurrency on an exchange.
+          </p>
+        </>
+      ),
+    },
+    {
+      isWallet: false,
+      step: '03.',
+      subTitle: 'Buy Kuku Coin',
+      content: (
+        <>
+          <p>
+            Sign up for an exchange to purchase Cookcoin, connect your wallet,
+            and purchase the desired amount of Cookcoin.
+          </p>
+          <p>Afterwards, transfer the purchased Cookcoin to your wallet.</p>
+        </>
+      ),
     },
   ]
   return (
     <article className="h-screen text-white">
-      <div className="row-flex justify-start items-center">
+      <div className="row-flex justify-center xl:justify-start items-center mb-10">
         <h1 className="text-4xl px-16 py-4">Simple Guide to Buy</h1>
       </div>
-      {contents.map((data) => (
-        <GuideCard
-          key={data.step}
-          isWallet={data.isWallet}
-          step={data.step}
-          subTitle={data.subTitle}
-          content={data.content}
-          wallets={data.wallets}
-        />
-      ))}
+      <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-5">
+        {contents.map((data) => (
+          <GuideCard
+            key={data.step}
+            isWallet={data.isWallet}
+            step={data.step}
+            subTitle={data.subTitle}
+            content={data.content}
+            icons={data.icons}
+          />
+        ))}
+      </div>
     </article>
   )
 }
 function GuideCard(props: TGuideCard) {
-  const { isWallet, step, subTitle, content, wallets } = props
+  const { isWallet, step, subTitle, content, icons } = props
   return (
-    <div className="w-[30rem] border-2 border-white rounded-lg bg-[#353535] bg-opacity-90">
+    <div className="w-[28rem] h-full border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 pb-6">
       <SubTitle step={step} subTitle={subTitle} />
       <div className="px-4">{content}</div>
       {isWallet ? (
         <div className="row-flex items-center justify-around mt-4">
-          {wallets?.map((data) => (
+          {icons?.map((data) => (
             <WalletIcon key={data.src} src={data.src} alt={data.alt} />
           ))}
         </div>
