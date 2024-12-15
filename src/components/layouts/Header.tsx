@@ -14,6 +14,7 @@ type Props = {
 type DropdownMenuProps = {
   toggleDropdown: () => void
   isDropdownOpen: boolean
+
   dropdownRef: React.RefObject<HTMLDivElement>
   menus: string[]
   handleClick: (menu: string) => void
@@ -46,12 +47,15 @@ export default function Header(props: Props) {
     switch (menu) {
       case ABOUT_KUKU_TITLE:
         scrollTo(introductionRef)
+        setIsDropdownOpen(false)
         break
       case GUIDE_TITLE:
         scrollTo(guideRef)
+        setIsDropdownOpen(false)
         break
       case ROADMAP_TITLE:
         scrollTo(roadmapRef)
+        setIsDropdownOpen(false)
         break
       default:
         break
