@@ -16,7 +16,7 @@ type NormalMenuProps = {
 export default function Header() {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const menus = ['Home', 'What is Kuku?', 'Menu2', 'Menu3']
+  const menus = ['About Kuku', 'Guide', 'Menu2', 'Menu3']
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -36,7 +36,7 @@ export default function Header() {
     }
   }, [])
   return (
-    <header className="grid grid-cols-6 h-24 fixed top-0 left-0 w-full bg-opacity-80 bg-black z-50 text-white">
+    <header className="grid grid-cols-6 h-24 fixed top-0 left-0 w-full bg-opacity-90 bg-black z-50 text-white">
       <div className="row-flex items-center justify-center w-24 h-24 col-span-1">
         <Image
           src="/kuku.png"
