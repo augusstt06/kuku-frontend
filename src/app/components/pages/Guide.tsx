@@ -3,6 +3,9 @@ import Image from 'next/image'
 type Props = {
   guideRef: React.RefObject<HTMLDivElement>
 }
+type TGuideTitle = {
+  title: string
+}
 type TGuideCard = {
   isWallet: boolean
   step: string
@@ -10,7 +13,7 @@ type TGuideCard = {
   content: React.ReactNode
   icons?: TWalletIcon[]
 }
-type TSubTitle = {
+type TGuideCardSubTitle = {
   step: string
   subTitle: string
 }
@@ -81,10 +84,8 @@ export default function Guide(props: Props) {
     },
   ]
   return (
-    <article ref={guideRef} className=" text-white">
-      <div className="row-flex justify-center xl:justify-start items-center">
-        <h1 className="text-4xl px-16 py-4">Simple Guide to Buy</h1>
-      </div>
+    <article ref={guideRef} className=" text-white pt-5 pb-10">
+      <GuideTitle title="Simple Guide to Buy" />
       <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-3">
         {contents.map((data) => (
           <GuideCard
@@ -100,11 +101,19 @@ export default function Guide(props: Props) {
     </article>
   )
 }
+function GuideTitle(props: TGuideTitle) {
+  const { title } = props
+  return (
+    <div className="row-flex justify-center xl:justify-start items-center">
+      <h1 className="text-4xl px-16 py-4">{title}</h1>
+    </div>
+  )
+}
 function GuideCard(props: TGuideCard) {
   const { isWallet, step, subTitle, content, icons } = props
   return (
     <div className="w-[28rem] h-full border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 pb-6">
-      <SubTitle step={step} subTitle={subTitle} />
+      <GuideCardSubTitle step={step} subTitle={subTitle} />
       <div className="px-4">{content}</div>
       {isWallet ? (
         <div className="row-flex items-center justify-around mt-4">
@@ -117,7 +126,7 @@ function GuideCard(props: TGuideCard) {
   )
 }
 
-function SubTitle(props: TSubTitle) {
+function GuideCardSubTitle(props: TGuideCardSubTitle) {
   const { step, subTitle } = props
   return (
     <div className="row-flex items-center space-x-4 px-4 pt-4 pb-2">
