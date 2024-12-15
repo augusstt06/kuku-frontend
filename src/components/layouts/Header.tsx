@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
+import { ABOUT_KUKU_TITLE, GUIDE_TITLE, ROADMAP_TITLE } from '@/constant'
+
 type Props = {
   introductionRef: React.RefObject<HTMLDivElement>
   guideRef: React.RefObject<HTMLDivElement>
@@ -24,7 +26,7 @@ export default function Header(props: Props) {
   const { introductionRef, guideRef, roadmapRef } = props
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const menus = ['About Kuku', 'Guide', 'Roadmap']
+  const menus = [ABOUT_KUKU_TITLE, GUIDE_TITLE, ROADMAP_TITLE]
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -42,13 +44,13 @@ export default function Header(props: Props) {
   }
   const handleClick = (menu: string) => {
     switch (menu) {
-      case 'About Kuku':
+      case ABOUT_KUKU_TITLE:
         scrollTo(introductionRef)
         break
-      case 'Guide':
+      case GUIDE_TITLE:
         scrollTo(guideRef)
         break
-      case 'Roadmap':
+      case ROADMAP_TITLE:
         scrollTo(roadmapRef)
         break
       default:

@@ -2,11 +2,11 @@
 
 import { useRef } from 'react'
 
-import Footer from '@/app/components/layouts/Footer'
-import Header from '@/app/components/layouts/Header'
-import Guide from '@/app/components/pages/Guide'
-import Introduction from '@/app/components/pages/Introduction'
-import RoadMap from '@/app/components/pages/RoadMap'
+import Footer from '@/components/layouts/Footer'
+import Header from '@/components/layouts/Header'
+import Guide from '@/components/pages/Guide'
+import Introduction from '@/components/pages/Introduction'
+import RoadMap from '@/components/pages/RoadMap'
 
 export default function Home() {
   const introductionRef = useRef<HTMLDivElement>(null)
