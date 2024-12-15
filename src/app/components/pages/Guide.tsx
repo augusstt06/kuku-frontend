@@ -76,11 +76,11 @@ export default function Guide() {
     },
   ]
   return (
-    <article className="h-screen text-white">
-      <div className="row-flex justify-center xl:justify-start items-center mb-10">
+    <article className=" text-white">
+      <div className="row-flex justify-center xl:justify-start items-center">
         <h1 className="text-4xl px-16 py-4">Simple Guide to Buy</h1>
       </div>
-      <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-5">
+      <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-3">
         {contents.map((data) => (
           <GuideCard
             key={data.step}
