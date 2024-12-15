@@ -84,7 +84,7 @@ export default function Guide(props: Props) {
     },
   ]
   return (
-    <article ref={guideRef} className=" text-white pt-5 pb-10">
+    <article ref={guideRef} className=" text-white pt-24 pb-10">
       <GuideTitle title="Simple Guide to Buy" />
       <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-3">
         {contents.map((data) => (

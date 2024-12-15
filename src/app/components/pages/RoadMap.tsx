@@ -14,6 +14,9 @@ import {
   FaUsers,
 } from 'react-icons/fa'
 
+type Props = {
+  roadmapRef: React.RefObject<HTMLDivElement>
+}
 type TRoadMapTitle = {
   title: string
 }
@@ -24,12 +27,13 @@ type TRoadMapTimeline = {
   color: string
   summary: string
 }
-export default function RoadMap() {
+export default function RoadMap(props: Props) {
+  const { roadmapRef } = props
   return (
-    <div className="text-white">
+    <article ref={roadmapRef} className="text-white pt-24 pb-10">
       <RoadMapTitle title="Development Roadmap" />
       <RoadmapComponent />
-    </div>
+    </article>
   )
 }
 

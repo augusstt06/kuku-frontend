@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 type Props = {
   introductionRef: React.RefObject<HTMLDivElement>
   guideRef: React.RefObject<HTMLDivElement>
+  roadmapRef: React.RefObject<HTMLDivElement>
 }
 type DropdownMenuProps = {
   toggleDropdown: () => void
@@ -20,10 +21,10 @@ type NormalMenuProps = {
   handleClick: (menu: string) => void
 }
 export default function Header(props: Props) {
-  const { introductionRef, guideRef } = props
+  const { introductionRef, guideRef, roadmapRef } = props
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const menus = ['About Kuku', 'Guide', 'Menu2', 'Menu3']
+  const menus = ['About Kuku', 'Guide', 'Roadmap']
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -40,10 +41,18 @@ export default function Header(props: Props) {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
   }
   const handleClick = (menu: string) => {
-    if (menu === 'About Kuku') {
-      scrollTo(introductionRef)
-    } else if (menu === 'Guide') {
-      scrollTo(guideRef)
+    switch (menu) {
+      case 'About Kuku':
+        scrollTo(introductionRef)
+        break
+      case 'Guide':
+        scrollTo(guideRef)
+        break
+      case 'Roadmap':
+        scrollTo(roadmapRef)
+        break
+      default:
+        break
     }
   }
   useEffect(() => {

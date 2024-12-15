@@ -11,13 +11,17 @@ import RoadMap from '@/app/components/pages/RoadMap'
 export default function Home() {
   const introductionRef = useRef<HTMLDivElement>(null)
   const guideRef = useRef<HTMLDivElement>(null)
-
+  const roadmapRef = useRef<HTMLDivElement>(null)
   return (
     <main>
-      <Header introductionRef={introductionRef} guideRef={guideRef} />
+      <Header
+        introductionRef={introductionRef}
+        guideRef={guideRef}
+        roadmapRef={roadmapRef}
+      />
       <Introduction introductionRef={introductionRef} />
       <Guide guideRef={guideRef} />
-      <RoadMap />
+      <RoadMap roadmapRef={roadmapRef} />
       <Footer />
     </main>
   )
