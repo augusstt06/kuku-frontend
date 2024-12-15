@@ -1,13 +1,16 @@
 import Image from 'next/image'
 import { FaTwitter } from 'react-icons/fa'
 import { MdEmojiEvents } from 'react-icons/md'
-
+type Props = {
+  introductionRef: React.RefObject<HTMLDivElement>
+}
 type TSubIntroductionText = {
   image: React.ReactNode
   text: React.ReactNode
   button: React.ReactNode
 }
-export default function Introduction() {
+export default function Introduction(props: Props) {
+  const { introductionRef } = props
   const subIntroductions = [
     {
       image: (
@@ -92,7 +95,7 @@ export default function Introduction() {
     },
   ]
   return (
-    <article className="xl:h-screen h-[170vh] relative">
+    <article ref={introductionRef} className="xl:h-screen h-[170vh] relative">
       <BgImage />
       <div className="z-10 pt-24 text-white h-full">
         <div className="h-1/4 relative">

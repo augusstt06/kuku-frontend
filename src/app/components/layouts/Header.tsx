@@ -4,16 +4,23 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
+type Props = {
+  introductionRef: React.RefObject<HTMLDivElement>
+  guideRef: React.RefObject<HTMLDivElement>
+}
 type DropdownMenuProps = {
   toggleDropdown: () => void
   isDropdownOpen: boolean
   dropdownRef: React.RefObject<HTMLDivElement>
   menus: string[]
+  handleClick: (menu: string) => void
 }
 type NormalMenuProps = {
   menus: string[]
+  handleClick: (menu: string) => void
 }
-export default function Header() {
+export default function Header(props: Props) {
+  const { introductionRef, guideRef } = props
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const menus = ['About Kuku', 'Guide', 'Menu2', 'Menu3']
@@ -27,6 +34,16 @@ export default function Header() {
       !dropdownRef.current.contains(event.target as Node)
     ) {
       setIsDropdownOpen(false)
+    }
+  }
+  const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+  const handleClick = (menu: string) => {
+    if (menu === 'About Kuku') {
+      scrollTo(introductionRef)
+    } else if (menu === 'Guide') {
+      scrollTo(guideRef)
     }
   }
   useEffect(() => {
@@ -51,14 +68,16 @@ export default function Header() {
         dropdownRef={dropdownRef}
         menus={menus}
         toggleDropdown={toggleDropdown}
+        handleClick={handleClick}
       />
-      <NormalMenu menus={menus} />
+      <NormalMenu menus={menus} handleClick={handleClick} />
     </header>
   )
 }
 
 function DropdownMenu(props: DropdownMenuProps) {
-  const { isDropdownOpen, dropdownRef, menus, toggleDropdown } = props
+  const { isDropdownOpen, dropdownRef, menus, toggleDropdown, handleClick } =
+    props
   return (
     <div className="md:hidden grid grid-cols-4 col-span-5">
       <GiHamburgerMenu
@@ -74,6 +93,9 @@ function DropdownMenu(props: DropdownMenuProps) {
             <div
               key={index}
               className="hover:bg-gray-200 simple-transition px-4 py-4 text-xl hover:text-black cursor-pointer"
+              onClick={() => {
+                handleClick(menu)
+              }}
             >
               {menu}
             </div>
@@ -85,11 +107,18 @@ function DropdownMenu(props: DropdownMenuProps) {
 }
 
 function NormalMenu(props: NormalMenuProps) {
-  const { menus } = props
+  const { menus, handleClick } = props
+
   return (
     <div className="md:grid hidden grid-cols-4 col-span-5">
       {menus.map((menu, index) => (
-        <div key={index} className="row-flex items-center justify-center">
+        <div
+          key={index}
+          className="row-flex items-center justify-center"
+          onClick={() => {
+            handleClick(menu)
+          }}
+        >
           <span className="hover:border-b-white simple-transition hover:text-white px-2 py-2 text-xl border-2 border-transparent cursor-pointer">
             {menu}
           </span>

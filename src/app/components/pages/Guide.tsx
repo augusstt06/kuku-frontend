@@ -1,4 +1,8 @@
 import Image from 'next/image'
+
+type Props = {
+  guideRef: React.RefObject<HTMLDivElement>
+}
 type TGuideCard = {
   isWallet: boolean
   step: string
@@ -15,7 +19,8 @@ type TWalletIcon = {
   alt: string
 }
 
-export default function Guide() {
+export default function Guide(props: Props) {
+  const { guideRef } = props
   const walletArr = [
     {
       src: '/metamask.png',
@@ -76,7 +81,7 @@ export default function Guide() {
     },
   ]
   return (
-    <article className=" text-white">
+    <article ref={guideRef} className=" text-white">
       <div className="row-flex justify-center xl:justify-start items-center">
         <h1 className="text-4xl px-16 py-4">Simple Guide to Buy</h1>
       </div>
