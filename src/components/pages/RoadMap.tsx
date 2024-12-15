@@ -104,7 +104,7 @@ function RoadMapTimelineElement(props: TRoadMapTimeline) {
       icon={Icon()}
     >
       <h3 className="vertical-timeline-element-title">{title}</h3>
-      <p>{content}</p>
+      <p className="text-lg">{content}</p>
     </VerticalTimelineElement>
   )
 }

@@ -43,7 +43,7 @@ export default function Guide(props: Props) {
   const contents = [
     {
       isWallet: true,
-      step: '01.',
+      step: '01',
       subTitle: 'Install Wallet',
       content: (
         <>
@@ -55,7 +55,7 @@ export default function Guide(props: Props) {
     },
     {
       isWallet: false,
-      step: '02.',
+      step: '02',
       subTitle: 'Connect Wallet',
       content: (
         <>
@@ -77,7 +77,7 @@ export default function Guide(props: Props) {
     },
     {
       isWallet: false,
-      step: '03.',
+      step: '03',
       subTitle: 'Buy Kuku Coin',
       content: (
         <>
