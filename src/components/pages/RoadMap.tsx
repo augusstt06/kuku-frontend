@@ -62,6 +62,7 @@ function RoadmapComponent() {
       color: '#10b981',
       summary: 'exchange',
     },
+    // FIXME: 로드맵 워딩 생각하기
     {
       date: '~~~ 2025',
       title: '확장 및 사용자 기반 강화',

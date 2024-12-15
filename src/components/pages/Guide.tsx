@@ -12,6 +12,8 @@ type TGuideCard = {
   subTitle: string
   content: React.ReactNode
   icons?: TWalletIcon[]
+  button?: string
+  clickButton?: () => void
 }
 type TGuideCardSubTitle = {
   step: string
@@ -67,6 +69,11 @@ export default function Guide(props: Props) {
           </p>
         </>
       ),
+      // FIXME: 버튼 클릭 이벤트 수정하기
+      button: 'More Info',
+      clickButton: () => {
+        console.log('click')
+      },
     },
     {
       isWallet: false,
@@ -81,12 +88,17 @@ export default function Guide(props: Props) {
           <p>Afterwards, transfer the purchased Cookcoin to your wallet.</p>
         </>
       ),
+      // FIXME: 버튼 클릭 이벤트 수정하기
+      button: 'Go to Exchange',
+      clickButton: () => {
+        console.log('click')
+      },
     },
   ]
   return (
     <article ref={guideRef} className=" text-white pt-24 pb-10">
       <GuideTitle title="Simple Guide to Buy" />
-      <div className="xl:row-flex col-flex justify-around items-center xl:h-60 xl:space-y-0 space-y-3">
+      <div className="xl:row-flex col-flex justify-around items-center h-68 xl:space-y-0 space-y-6">
         {contents.map((data) => (
           <GuideCard
             key={data.step}
@@ -95,6 +107,8 @@ export default function Guide(props: Props) {
             subTitle={data.subTitle}
             content={data.content}
             icons={data.icons}
+            button={data.button}
+            clickButton={data.clickButton}
           />
         ))}
       </div>
@@ -104,24 +118,36 @@ export default function Guide(props: Props) {
 function GuideTitle(props: TGuideTitle) {
   const { title } = props
   return (
-    <div className="row-flex justify-center xl:justify-start items-center">
+    <div className="row-flex justify-center xl:justify-start items-center mb-6">
       <h1 className="text-4xl px-16 py-4">{title}</h1>
     </div>
   )
 }
 function GuideCard(props: TGuideCard) {
-  const { isWallet, step, subTitle, content, icons } = props
+  const { isWallet, step, subTitle, content, icons, button, clickButton } =
+    props
   return (
-    <div className="w-[28rem] h-full border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 pb-6">
+    <div className="w-[25rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 pb-6 grid grid-rows-4">
       <GuideCardSubTitle step={step} subTitle={subTitle} />
-      <div className="px-4">{content}</div>
+      <div className="px-4 row-span-2 items-center justify-center col-flex">
+        {content}
+      </div>
       {isWallet ? (
-        <div className="row-flex items-center justify-around mt-4">
+        <div className="row-flex items-center justify-around mt-4 row-span-1">
           {icons?.map((data) => (
             <WalletIcon key={data.src} src={data.src} alt={data.alt} />
           ))}
         </div>
-      ) : null}
+      ) : (
+        <div className="row-flex items-center justify-around mt-4">
+          <button
+            className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md"
+            onClick={clickButton}
+          >
+            {button}
+          </button>
+        </div>
+      )}
     </div>
   )
 }
@@ -129,7 +155,7 @@ function GuideCard(props: TGuideCard) {
 function GuideCardSubTitle(props: TGuideCardSubTitle) {
   const { step, subTitle } = props
   return (
-    <div className="row-flex items-center space-x-4 px-4 pt-4 pb-2">
+    <div className="row-flex items-center space-x-4 px-4 pt-4 pb-2 row-span-1">
       <div className="bg-blue-400 rounded-lg row-flex items-center justify-center w-12 h-12 text-2xl">
         {step}
       </div>
@@ -148,7 +174,7 @@ function WalletIcon(props: TWalletIcon) {
         alt={alt}
         width={50}
         height={50}
-        className="h-12 hover:scale-105 simple-transition cursor-pointer "
+        className="h-12 hover:scale-125 simple-transition cursor-pointer "
       />
       <p>{alt}</p>
     </div>
