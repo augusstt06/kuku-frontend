@@ -127,19 +127,19 @@ function GuideCard(props: TGuideCard) {
   const { isWallet, step, subTitle, content, icons, button, clickButton } =
     props
   return (
-    <div className="w-[25rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 pb-6 grid grid-rows-4">
+    <div className="w-[27rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 grid grid-rows-4 px-4 py-2 hover:scale-110 simple-transition">
       <GuideCardSubTitle step={step} subTitle={subTitle} />
-      <div className="px-4 row-span-2 items-center justify-center col-flex">
+      <div className="py-2 px-4 text-lg row-span-2 items-start justify-center col-flex">
         {content}
       </div>
       {isWallet ? (
-        <div className="row-flex items-center justify-around mt-4 row-span-1">
+        <div className="row-flex items-center justify-around row-span-1">
           {icons?.map((data) => (
             <WalletIcon key={data.src} src={data.src} alt={data.alt} />
           ))}
         </div>
       ) : (
-        <div className="row-flex items-center justify-around mt-4">
+        <div className="row-flex items-center justify-around row-span-1">
           <button
             className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md"
             onClick={clickButton}
@@ -155,7 +155,7 @@ function GuideCard(props: TGuideCard) {
 function GuideCardSubTitle(props: TGuideCardSubTitle) {
   const { step, subTitle } = props
   return (
-    <div className="row-flex items-center space-x-4 px-4 pt-4 pb-2 row-span-1">
+    <div className="row-flex items-center space-x-4 px-4 row-span-1 ">
       <div className="bg-blue-400 rounded-lg row-flex items-center justify-center w-12 h-12 text-2xl">
         {step}
       </div>

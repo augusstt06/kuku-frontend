@@ -7,12 +7,16 @@
 @layer base {
   body {
     @apply bg-black;
-    font-family: 'ConcertOne';
+    font-family: 'ArchivoNarrow';
   }
 }
 @font-face {
   font-family: 'ConcertOne';
   src: url('/fonts/ConcertOne-Regular.ttf');
+}
+@font-face {
+  font-family: 'ArchivoNarrow';
+  src: url('/fonts/ArchivoNarrow.ttf');
 }
 @layer utilities {
   .row-flex {
