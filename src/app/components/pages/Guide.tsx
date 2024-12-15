@@ -1,5 +1,11 @@
 import Image from 'next/image'
-
+type TGuideCard = {
+  isWallet: boolean
+  step: string
+  subTitle: string
+  content: React.ReactNode
+  wallets?: TWalletIcon[]
+}
 type TSubTitle = {
   step: string
   subTitle: string
@@ -10,7 +16,7 @@ type TWalletIcon = {
 }
 
 export default function Guide() {
-  const wallets = [
+  const walletArr = [
     {
       src: '/metamask.png',
       alt: 'Metamask',
@@ -24,31 +30,54 @@ export default function Guide() {
       alt: 'Exodus',
     },
   ]
+  const contents = [
+    {
+      isWallet: true,
+      step: '01.',
+      subTitle: 'Install Wallet',
+      content: (
+        <>
+          <p>Install the cryptocurrency wallet below to purchase KukuCoin.</p>
+          <p>Click the icon below to go to the installation page.</p>
+        </>
+      ),
+      wallets: walletArr,
+    },
+  ]
   return (
     <article className="h-screen text-white">
       <div className="row-flex justify-start items-center">
         <h1 className="text-4xl px-16 py-4">Simple Guide to Buy</h1>
       </div>
-      {/* FIXME: 아래 코드 컴포넌트화 하기 */}
-      <div className="w-[30rem] border-2 border-white rounded-lg bg-[#353535] bg-opacity-90">
-        <SubTitle step="01." subTitle="Install Wallet" />
-        <div className="px-4">
-          <p>Install the cryptocurrency wallet below to purchase KukuCoin.</p>
-          <p>Click the icon below to go to the installation page.</p>
-        </div>
-        <div className="row-flex items-center justify-around mt-4">
-          {wallets.map((data) => (
-            <WalletIcon key={data.src} src={data.src} alt={data.alt} />
-          ))}
-        </div>
-      </div>
-      {/*  */}
+      {contents.map((data) => (
+        <GuideCard
+          key={data.step}
+          isWallet={data.isWallet}
+          step={data.step}
+          subTitle={data.subTitle}
+          content={data.content}
+          wallets={data.wallets}
+        />
+      ))}
     </article>
   )
 }
-// function GuideCard (){
-//   return ()
-// }
+function GuideCard(props: TGuideCard) {
+  const { isWallet, step, subTitle, content, wallets } = props
+  return (
+    <div className="w-[30rem] border-2 border-white rounded-lg bg-[#353535] bg-opacity-90">
+      <SubTitle step={step} subTitle={subTitle} />
+      <div className="px-4">{content}</div>
+      {isWallet ? (
+        <div className="row-flex items-center justify-around mt-4">
+          {wallets?.map((data) => (
+            <WalletIcon key={data.src} src={data.src} alt={data.alt} />
+          ))}
+        </div>
+      ) : null}
+    </div>
+  )
+}
 
 function SubTitle(props: TSubTitle) {
   const { step, subTitle } = props
