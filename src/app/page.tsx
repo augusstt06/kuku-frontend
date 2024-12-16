@@ -9,6 +9,7 @@ import Introduction from '@/components/pages/Introduction'
 import RoadMap from '@/components/pages/RoadMap'
 
 export default function Home() {
+  // FIXME: 폰트, 배경바꾸기
   const introductionRef = useRef<HTMLDivElement>(null)
   const guideRef = useRef<HTMLDivElement>(null)
   const roadmapRef = useRef<HTMLDivElement>(null)
