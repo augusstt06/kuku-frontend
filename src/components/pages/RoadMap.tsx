@@ -65,9 +65,10 @@ function RoadmapComponent() {
     },
     // FIXME: 로드맵 워딩 생각하기
     {
-      date: '~~~ 2025',
-      title: '확장 및 사용자 기반 강화',
-      content: '중앙화 거래소 상장 및 NFT 컬렉션 출시',
+      date: 'FEB 2025',
+      title: 'Enhancement of user base and expansion',
+      content:
+        'Listing on a centralized exchange and release of NFT collection',
       color: '#f59e0b',
       summary: 'users',
     },
