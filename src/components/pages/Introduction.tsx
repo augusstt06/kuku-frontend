@@ -157,7 +157,6 @@ export function SubIntroductionText(props: TSubIntroductionText) {
   const { image, text, button } = props
   const isButtonExist = button !== null
   return (
-    // <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[30rem] h-[18rem] rounded-lg px-10 py-6 grid grid-rows-5">
     <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] md:w-[30rem] sm:w-[20rem] w-[18rem] sm:h-[18rem] h-[20rem] rounded-lg px-10 py-6 grid grid-rows-5">
       <div className="row-flex xl:items-center items-start justify-center h-24 row-span-1">
         {image}
