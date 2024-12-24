@@ -40,8 +40,8 @@ export default function RoadMap(props: Props) {
 function RoadMapTitle(props: TRoadMapTitle) {
   const { title } = props
   return (
-    <div className="row-flex justify-center xl:justify-start items-center">
-      <h1 className="text-4xl px-16 py-4">{title}</h1>
+    <div className="row-flex justify-center xl:justify-start items-center text-center">
+      <h1 className="md:text-[3.5rem] text-4xl px-16 py-4">{title}</h1>
     </div>
   )
 }

@@ -118,8 +118,8 @@ export default function Guide(props: Props) {
 function GuideTitle(props: TGuideTitle) {
   const { title } = props
   return (
-    <div className="row-flex justify-center xl:justify-start items-center mb-6">
-      <h1 className="text-4xl px-16 py-4">{title}</h1>
+    <div className="row-flex justify-center xl:justify-start items-center mb-6 text-center">
+      <h1 className="md:text-[3.5rem] text-4xl px-16 py-4">{title}</h1>
     </div>
   )
 }
@@ -127,9 +127,9 @@ function GuideCard(props: TGuideCard) {
   const { isWallet, step, subTitle, content, icons, button, clickButton } =
     props
   return (
-    <div className="w-[27rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 grid grid-rows-4 px-4 py-2 hover:scale-110 simple-transition">
+    <div className="md:w-[27rem] sm:w-[20rem] w-[18rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 grid grid-rows-4 px-4 py-2 hover:scale-110 simple-transition">
       <GuideCardSubTitle step={step} subTitle={subTitle} />
-      <div className="py-2 px-4 text-lg row-span-2 items-start justify-center col-flex">
+      <div className="py-2 px-4 md:text-lg text-sm row-span-2 items-start justify-center col-flex">
         {content}
       </div>
       {isWallet ? (
@@ -141,7 +141,7 @@ function GuideCard(props: TGuideCard) {
       ) : (
         <div className="row-flex items-center justify-around row-span-1">
           <button
-            className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md"
+            className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md"
             onClick={clickButton}
           >
             {button}
@@ -155,11 +155,11 @@ function GuideCard(props: TGuideCard) {
 function GuideCardSubTitle(props: TGuideCardSubTitle) {
   const { step, subTitle } = props
   return (
-    <div className="row-flex items-center space-x-4 px-4 row-span-1 ">
-      <div className="bg-blue-400 rounded-lg row-flex items-center justify-center w-12 h-12 text-2xl">
+    <div className="row-flex items-center space-x-4 px-4 row-span-1 simple-transition">
+      <div className="bg-blue-400 rounded-lg row-flex items-center justify-center md:w-12 md:h-12 w-10 h-10 md:text-2xl text-xl">
         {step}
       </div>
-      <h1 className="text-3xl">{subTitle}</h1>
+      <h1 className="md:text-3xl text-2xl">{subTitle}</h1>
     </div>
   )
 }
