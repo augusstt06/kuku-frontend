@@ -23,7 +23,7 @@ export default function Introduction(props: Props) {
         />
       ),
       text: (
-        <div className="pt-5">
+        <div className="pt-5 md:text-lg text-sm">
           <p>
             <span className="text-blue-400">Kuku Coin</span> is a special meme
             coin created to commemorate the adorable cat Kuku.
@@ -46,7 +46,7 @@ export default function Introduction(props: Props) {
         <MdEmojiEvents className="xl:w-28 xl:h-24 w-12 h-12 text-yellow-300" />
       ),
       text: (
-        <>
+        <div className="md:text-lg text-sm">
           <p>
             Participate in Kuku Coin’s first{' '}
             <span className="text-blue-400">Development Event!</span>
@@ -60,11 +60,11 @@ export default function Introduction(props: Props) {
             If you would like to participate, please pre-register through the
             button below.
           </p>
-        </>
+        </div>
       ),
       // FIXME: 버튼 클릭 이벤트 추가하기
       button: (
-        <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+        <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
           Pre-register
         </button>
       ),
@@ -72,7 +72,7 @@ export default function Introduction(props: Props) {
     {
       image: <FaTwitter className="xl:w-28 xl:h-24 w-12 h-12 text-blue-400" />,
       text: (
-        <>
+        <div className="md:text-lg text-sm">
           <p>
             Check out Kuku Coin’s latest news and announcements on{' '}
             <span className="text-blue-400">Twitter!</span>
@@ -84,11 +84,11 @@ export default function Introduction(props: Props) {
             communication with the community, so we ask for your interest and
             participation!
           </p>
-        </>
+        </div>
       ),
       // FIXME: 버튼 클릭 이벤트 추가하기
       button: (
-        <button className="bg-blue-400 hover:bg-blue-500 simple-transition text-white px-4 py-2 rounded-md">
+        <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
           Go Twitter
         </button>
       ),
@@ -122,7 +122,7 @@ export function BgImage() {
 }
 export function IntroductionText() {
   return (
-    <h1 className="text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
+    <h1 className="text-[3.5rem] md:text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
       KuKu Coin
     </h1>
   )
@@ -157,7 +157,8 @@ export function SubIntroductionText(props: TSubIntroductionText) {
   const { image, text, button } = props
   const isButtonExist = button !== null
   return (
-    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[30rem] h-[18rem] rounded-lg px-10 py-6 grid grid-rows-5">
+    // <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] w-[30rem] h-[18rem] rounded-lg px-10 py-6 grid grid-rows-5">
+    <div className="bg-black bg-opacity-80 xl:w-[23rem] xl:h-[30rem] md:w-[30rem] sm:w-[20rem] w-[18rem] sm:h-[18rem] h-[20rem] rounded-lg px-10 py-6 grid grid-rows-5">
       <div className="row-flex xl:items-center items-start justify-center h-24 row-span-1">
         {image}
       </div>
