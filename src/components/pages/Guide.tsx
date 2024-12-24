@@ -26,6 +26,20 @@ type TWalletIcon = {
 
 export default function Guide(props: Props) {
   const { guideRef } = props
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        })
+        console.log('Wallet Connected!')
+      } catch (error) {
+        console.error('User denied account access or error occurred:', error)
+      }
+    } else {
+      alert('Please install MetaMask')
+    }
+  }
   const walletArr = [
     {
       src: '/metamask.png',
@@ -60,8 +74,9 @@ export default function Guide(props: Props) {
       content: (
         <>
           <p>
-            Open the installed wallet and create a wallet. Set a password and
-            keep your recovery phrase safe.
+            Open the installed wallet and create a wallet.
+            <br />
+            Set a password and keep your recovery phrase safe.
           </p>
           <p>
             Add funds to your wallet by purchasing Ethereum (ETH) or another
@@ -69,10 +84,10 @@ export default function Guide(props: Props) {
           </p>
         </>
       ),
-      // FIXME: 버튼 클릭 이벤트 수정하기
-      button: 'More Info',
+
+      button: 'Connect Wallet',
       clickButton: () => {
-        console.log('click')
+        void connectWallet()
       },
     },
     {
@@ -82,13 +97,13 @@ export default function Guide(props: Props) {
       content: (
         <>
           <p>
-            Sign up for an exchange to purchase Cookcoin, connect your wallet,
-            and purchase the desired amount of Cookcoin.
+            Sign up for an exchange to purchase KukuCoin, connect your wallet,
+            and purchase the desired amount of KukuCoin.
           </p>
-          <p>Afterwards, transfer the purchased Cookcoin to your wallet.</p>
+          <p>Afterwards, transfer the purchased KukuCoin to your wallet.</p>
         </>
       ),
-      // FIXME: 버튼 클릭 이벤트 수정하기
+      // FIXME: 버튼 클릭 이벤트 -> 거래소로 이동 기능
       button: 'Go to Exchange',
       clickButton: () => {
         console.log('click')
@@ -127,7 +142,7 @@ function GuideCard(props: TGuideCard) {
   const { isWallet, step, subTitle, content, icons, button, clickButton } =
     props
   return (
-    <div className="md:w-[27rem] sm:w-[20rem] w-[18rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 grid grid-rows-4 px-4 py-2 hover:scale-110 simple-transition">
+    <div className="md:w-[27rem] sm:w-[20rem] w-[18rem] h-[18rem] border-2 border-[#353535] rounded-lg bg-[#222222] bg-opacity-90 grid grid-rows-4 px-4 py-2 simple-transition">
       <GuideCardSubTitle step={step} subTitle={subTitle} />
       <div className="py-2 px-4 md:text-lg text-sm row-span-2 items-start justify-center col-flex">
         {content}
