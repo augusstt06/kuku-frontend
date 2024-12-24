@@ -76,7 +76,7 @@ module.exports = {
     ],
     // 'no-console': ['error'],
   },
-  ignorePatterns: ['.eslintrc.js', 'inputValidate.tsx'],
+  ignorePatterns: ['.eslintrc.js', 'global.d.ts'],
   settings: {
     react: {
       version: 'detect',
