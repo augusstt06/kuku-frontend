@@ -100,8 +100,9 @@ export default function Introduction(props: Props) {
       <div className="z-10 pt-24 text-white h-full">
         <div className="h-1/6 xl:h-1/4 relative ">
           <IntroductionText />
+          <WalletButton />
         </div>
-        <div className="absolute w-full h-[100vh] grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5">
+        <div className="absolute w-full h-[100vh] grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5 pt-6">
           {subIntroductions.map((subIntroduction, index) => (
             <SubIntroductionText key={index} {...subIntroduction} />
           ))}
@@ -121,9 +122,35 @@ export function BgImage() {
 }
 export function IntroductionText() {
   return (
-    <h1 className="text-[5rem] font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
+    <h1 className="text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
       KuKu Coin
     </h1>
+  )
+}
+export function WalletButton() {
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        })
+        console.log('Wallet Connected!')
+      } catch (error) {
+        console.error('User denied account access or error occurred:', error)
+      }
+    } else {
+      alert('Please install MetaMask')
+    }
+  }
+  return (
+    <button
+      onClick={() => {
+        void connectWallet()
+      }}
+      className="bg-blue-400 hover:bg-blue-500 hover:scale-110 simple-transition text-xl text-white px-4 py-2 rounded-md  absolute top-[65%] left-1/2 -translate-x-1/2"
+    >
+      Connect Wallet
+    </button>
   )
 }
 export function SubIntroductionText(props: TSubIntroductionText) {
