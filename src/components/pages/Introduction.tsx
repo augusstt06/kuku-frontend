@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Image from 'next/image'
 import { FaTwitter } from 'react-icons/fa'
 import { MdEmojiEvents } from 'react-icons/md'
@@ -62,7 +64,7 @@ export default function Introduction(props: Props) {
           </p>
         </div>
       ),
-      // FIXME: 버튼 클릭 이벤트 추가하기
+      // FIXME: 버튼 클릭 이벤트 -> 이벤트 페이지 이동
       button: (
         <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
           Pre-register
@@ -86,7 +88,7 @@ export default function Introduction(props: Props) {
           </p>
         </div>
       ),
-      // FIXME: 버튼 클릭 이벤트 추가하기
+      // FIXME: 버튼 클릭 이벤트 -> 트위터 이동
       button: (
         <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
           Go Twitter
@@ -101,6 +103,7 @@ export default function Introduction(props: Props) {
         <div className="h-1/6 xl:h-1/4 relative ">
           <IntroductionText />
           <WalletButton />
+          <Balance />
         </div>
         <div className="absolute w-full h-[100vh] grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5 pt-6">
           {subIntroductions.map((subIntroduction, index) => (
@@ -112,7 +115,7 @@ export default function Introduction(props: Props) {
   )
 }
 
-export function BgImage() {
+function BgImage() {
   return (
     <div
       className="absolute inset-0 bg-cover bg-center opacity-80 h-[170vh] xl:h-full"
@@ -120,14 +123,15 @@ export function BgImage() {
     ></div>
   )
 }
-export function IntroductionText() {
+function IntroductionText() {
   return (
     <h1 className="text-[3.5rem] md:text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
       KuKu Coin
     </h1>
   )
 }
-export function WalletButton() {
+
+function WalletButton() {
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
@@ -153,7 +157,7 @@ export function WalletButton() {
     </button>
   )
 }
-export function SubIntroductionText(props: TSubIntroductionText) {
+function SubIntroductionText(props: TSubIntroductionText) {
   const { image, text, button } = props
   const isButtonExist = button !== null
   return (
@@ -169,6 +173,34 @@ export function SubIntroductionText(props: TSubIntroductionText) {
       <div className="row-span-1 row-flex items-center justify-center">
         {button}
       </div>
+    </div>
+  )
+}
+
+// FIXME: Test 필요
+function Balance() {
+  // 지갑 잔액
+  const [balance, setBalance] = useState<string | null>(null)
+
+  const fetchBalance = async () => {
+    const accounts = await window.ethereum.request({ method: 'eth_accounts' })
+    if (accounts.length > 0) {
+      const balance = await window.ethereum.request({
+        method: 'eth_getBalance',
+        params: [accounts[0], 'latest'],
+      })
+      const balanceInEth: string = window.ethereum.utils.fromWei(
+        balance as string,
+        'ether',
+      )
+      setBalance(balanceInEth)
+      return balanceInEth
+    }
+  }
+
+  return (
+    <div>
+      {balance && <p className="text-white">Balance: {fetchBalance()} ETH</p>}{' '}
     </div>
   )
 }
