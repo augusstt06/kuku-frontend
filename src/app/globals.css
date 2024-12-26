@@ -1,16 +1,22 @@
+@import 'react-vertical-timeline-component/style.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-[#5f5f5f];
-    font-family: 'ConcertOne';
+    @apply bg-black;
+    font-family: 'ArchivoNarrow';
   }
 }
 @font-face {
   font-family: 'ConcertOne';
   src: url('/fonts/ConcertOne-Regular.ttf');
+}
+@font-face {
+  font-family: 'ArchivoNarrow';
+  src: url('/fonts/ArchivoNarrow.ttf');
 }
 @layer utilities {
   .row-flex {
