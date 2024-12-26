@@ -19,10 +19,12 @@ The Kuku Coin introduction website was created to provide information about the 
 
 ## Skills
 
+<div style="display: flex; gap: 10px;">
 <img src="https://img.shields.io/badge/next js 15-000000?style=for-the-badge&logo=nextdotjs&logoColor=#000000">
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
 <img src="https://img.shields.io/badge/tailwind css-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 <img src="https://img.shields.io/badge/web3.js-F7DF1E?style=for-the-badge&logo=web3.js&logoColor=white">
+</div>
 
 ## Features
 
