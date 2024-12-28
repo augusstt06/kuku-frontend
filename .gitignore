@@ -49,5 +49,6 @@ next-env.d.ts
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.pnp.loader.mjs
 
 .env
