@@ -28,4 +28,7 @@
   .simple-transition {
     @apply ease-in-out transition-all duration-500;
   }
+  .font-concertOne {
+    font-family: 'ConcertOne';
+  }
 }

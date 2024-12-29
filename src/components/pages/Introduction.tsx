@@ -133,7 +133,7 @@ function BgImage() {
 }
 function IntroductionText() {
   return (
-    <h1 className="text-[3.5rem] md:text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
+    <h1 className="font-concertOne text-[3.5rem] md:text-[5rem] font-bold absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
       KuKu Coin
     </h1>
   )
