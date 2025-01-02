@@ -1,16 +1,16 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
-import detectEthereumProvider from '@metamask/detect-provider'
-import Web3 from 'web3'
+// import detectEthereumProvider from '@metamask/detect-provider'
+// import Web3 from 'web3'
 
 import Image from 'next/image'
 import { FaTwitter } from 'react-icons/fa'
 import { MdEmojiEvents } from 'react-icons/md'
 
-import { CONTRACT_ADDRESS } from '@/constant'
-import { type Ethereum } from '@/types'
+// import { CONTRACT_ADDRESS } from '@/constant'
+// import { type Ethereum } from '@/types'
 
-import contractABI from '@/abis/KukuCoin.json'
+// import contractABI from '@/abis/KukuCoin.json'
 
 type Props = {
   introductionRef: React.RefObject<HTMLDivElement>
@@ -111,7 +111,7 @@ export default function Introduction(props: Props) {
       <div className="z-10 pt-24 text-white h-full">
         <div className="h-1/6 xl:h-1/4 relative ">
           <IntroductionText />
-          <WalletButton />
+          {/* <WalletButton /> */}
         </div>
         <div className="absolute w-full h-[100vh] grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-5 pt-6">
           {subIntroductions.map((subIntroduction, index) => (
@@ -139,52 +139,52 @@ function IntroductionText() {
   )
 }
 
-function WalletButton() {
-  const [balance, setBalance] = useState<string | null>(null)
+// function WalletButton() {
+//   const [balance, setBalance] = useState<string | null>(null)
 
-  // FIXME: Test 필요
-  const fetchBalance = async (provider: Ethereum) => {
-    const accounts: string[] = await provider.request({
-      method: 'eth_accounts',
-    })
-    if (accounts.length > 0) {
-      const web3 = new Web3(provider)
-      const contract = new web3.eth.Contract(contractABI, CONTRACT_ADDRESS)
+//   // FIXME: Test 필요
+//   const fetchBalance = async (provider: Ethereum) => {
+//     const accounts: string[] = await provider.request({
+//       method: 'eth_accounts',
+//     })
+//     if (accounts.length > 0) {
+//       const web3 = new Web3(provider)
+//       const contract = new web3.eth.Contract(contractABI, CONTRACT_ADDRESS)
 
-      const balance: string = await contract.methods
-        .balanceOf(accounts[0])
-        .call()
-      const balanceInEth = web3.utils.fromWei(balance, 'ether')
-      setBalance(balanceInEth)
-      return balanceInEth
-    }
-  }
-  const connectWallet = async () => {
-    const provider = (await detectEthereumProvider()) as unknown as Ethereum // provider 타입을 any로 캐스팅
-    if (provider) {
-      try {
-        await provider.request({ method: 'eth_requestAccounts' }) // 지갑 연결 요청
-        console.log('Wallet Connected!')
-        await fetchBalance(provider) // 지갑 연결 후 잔액 조회
-      } catch (error) {
-        console.error('User denied account access or error occurred:', error)
-      }
-    } else {
-      alert('Please install MetaMask') // MetaMask가 설치되어 있지 않은 경우
-    }
-  }
-  return (
-    <button
-      onClick={() => {
-        void connectWallet()
-      }}
-      className="bg-blue-400 hover:bg-blue-500 hover:scale-110 simple-transition text-xl text-white px-4 py-2 rounded-md  absolute top-[65%] left-1/2 -translate-x-1/2"
-    >
-      Connect Wallet {/* FIXME: 표시 위치 조정 */}
-      {balance && <p className="text-white">Balance: {balance} ETH</p>}{' '}
-    </button>
-  )
-}
+//       const balance: string = await contract.methods
+//         .balanceOf(accounts[0])
+//         .call()
+//       const balanceInEth = web3.utils.fromWei(balance, 'ether')
+//       setBalance(balanceInEth)
+//       return balanceInEth
+//     }
+//   }
+//   const connectWallet = async () => {
+//     const provider = (await detectEthereumProvider()) as unknown as Ethereum
+//     if (provider) {
+//       try {
+//         await provider.request({ method: 'eth_requestAccounts' })
+//         console.log('Wallet Connected!')
+//         await fetchBalance(provider)
+//       } catch (error) {
+//         console.error('User denied account access or error occurred:', error)
+//       }
+//     } else {
+//       alert('Please install MetaMask')
+//     }
+//   }
+//   return (
+//     <button
+//       onClick={() => {
+//         void connectWallet()
+//       }}
+//       className="bg-blue-400 hover:bg-blue-500 hover:scale-110 simple-transition text-xl text-white px-4 py-2 rounded-md  absolute top-[65%] left-1/2 -translate-x-1/2"
+//     >
+//       Connect Wallet {/* FIXME: 표시 위치 조정 */}
+//       {balance && <p className="text-white">Balance: {balance} ETH</p>}{' '}
+//     </button>
+//   )
+// }
 function SubIntroductionText(props: TSubIntroductionText) {
   const { image, text, button } = props
   const isButtonExist = button !== null
