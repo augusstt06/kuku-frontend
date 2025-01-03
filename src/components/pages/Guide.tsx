@@ -104,7 +104,7 @@ export default function Guide(props: Props) {
         </>
       ),
       // FIXME: 버튼 클릭 이벤트 -> 거래소로 이동 기능
-      button: 'Go to Exchange',
+      button: 'Preparing for exchange listing',
       clickButton: () => {
         console.log('click')
       },

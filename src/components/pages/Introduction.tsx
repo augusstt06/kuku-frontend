@@ -63,24 +63,20 @@ export default function Introduction(props: Props) {
       text: (
         <div className="md:text-lg text-sm">
           <p>
-            Participate in Kuku Coin’s first{' '}
-            <span className="text-blue-400">Development Event!</span>
+            Kuku coin’s <span className="text-blue-400">development</span> event
+            is currently being prepared.
           </p>
 
           <p>
             This event is a place to discuss the future of Kuku Coin and share
             ideas with the community.
           </p>
-          <p>
-            If you would like to participate, please pre-register through the
-            button below.
-          </p>
+          <p>More information will be available soon.</p>
         </div>
       ),
-      // FIXME: 버튼 클릭 이벤트 -> 이벤트 페이지 이동
       button: (
         <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
-          Pre-register
+          Coming Soon
         </button>
       ),
     },
