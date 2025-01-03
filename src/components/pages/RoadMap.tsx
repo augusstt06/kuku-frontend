@@ -47,7 +47,6 @@ function RoadMapTitle(props: TRoadMapTitle) {
 }
 
 function RoadmapComponent() {
-  // FIXME: 타임라인 추가하기
   const timelines = [
     {
       date: 'DEC 2024',
