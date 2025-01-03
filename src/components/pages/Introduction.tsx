@@ -4,8 +4,11 @@
 // import Web3 from 'web3'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { FaTwitter } from 'react-icons/fa'
 import { MdEmojiEvents } from 'react-icons/md'
+
+import { GITBOOK_URL } from '@/constant'
 
 // import { CONTRACT_ADDRESS } from '@/constant'
 // import { type Ethereum } from '@/types'
@@ -39,10 +42,7 @@ export default function Introduction(props: Props) {
             <span className="text-blue-400">Kuku Coin</span> is a special meme
             coin created to commemorate the adorable cat Kuku.
           </p>
-          <p>
-            Kuku is a cute friend in our house, and his unique personality and
-            charm are loved by many people.
-          </p>
+
           <p>
             <span className="text-blue-400">Kuku Coin</span> aims to go beyond a
             simple cryptocurrency and become a platform that connects cat lovers
@@ -50,7 +50,11 @@ export default function Introduction(props: Props) {
           </p>
         </div>
       ),
-      button: null,
+      button: (
+        <button className="bg-blue-400 hover:bg-blue-500 simple-transition md:text-lg text-sm text-white px-4 py-2 rounded-md">
+          <Link href={GITBOOK_URL}>More Info</Link>
+        </button>
+      ),
     },
     {
       image: (
